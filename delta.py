@@ -45,11 +45,10 @@ def find_acronyms(text):
     for i in splits:
         if i in DELTA_ACRONYM:
             acronym = DELTA_ACRONYM.get(i)
-            foundDeltaCodes.add(
-                i + ": " + acronym['name'] + " (" + acronym['city'] + ")")
+            foundDeltaCodes.add(i + ": " + acronym['name'])
         elif i in AIRPORTS:
             airport = AIRPORTS.get(i)
-            foundAirportCodes.add(i + ": " + airport['name'])
+            foundAirportCodes.add(i + ": " + airport['name']  + " (" + acronym['city'] + ")")
 
     if len(foundAirportCodes) != 0:
         returnText = "**Airports:**" + NEW_LINE + \
