@@ -45,7 +45,8 @@ def find_acronyms(text):
     for i in splits:
         if i in DELTA_ACRONYM:
             acronym = DELTA_ACRONYM.get(i)
-            foundDeltaCodes.add(i + ": " + acronym['name'])
+            foundDeltaCodes.add(
+                i + ": " + acronym['name'] + " (" + acronym['city'] + ")")
         elif i in AIRPORTS:
             airport = AIRPORTS.get(i)
             foundAirportCodes.add(i + ": " + airport['name'])
@@ -82,30 +83,24 @@ def main():
     # subreddit = reddit.subreddit("test")
 
     for submission in subreddit.new(limit=5):
-        if not has_posted(submission.comments):
-            acronyms = find_acronyms(
-                submission.title + " " + submission.selftext)
-            if acronyms != '':
-                submission.reply(body=acronyms)
-                log("INFO: post response posted successfuly. " +
-                    submission.id + " " + submission.title)
+        try:
+            if not has_posted(submission.comments):
+                acronyms = find_acronyms(
+                    submission.title + " " + submission.selftext)
+                if acronyms != '':
+                    submission.reply(body=acronyms)
+                    log("INFO: post response posted successfuly. " +
+                        submission.id + " " + submission.title)
 
-        for comment in submission.comments:
-            if comment.is_submitter:
-                if not has_posted(comment.replies):
-                    acronyms = find_acronyms(comment.body)
-                    if acronyms != '':
-                        comment.reply(body=acronyms)
-                        log("INFO: comment response posted successfuly. " +
-                            comment.id + " " + comment.body)
+            for comment in submission.comments:
+                if comment.is_submitter:
+                    if not has_posted(comment.replies):
+                        acronyms = find_acronyms(comment.body)
+                        if acronyms != '':
+                            comment.reply(body=acronyms)
+                            log("INFO: comment response posted successfuly. " +
+                                comment.id + " " + comment.body)
+        except Exception as e:
+            log("ERROR: in main()")
+            print(e)
 
-
-while(True):
-    try:
-        main()
-    except Exception as e:
-        log("ERROR: in main()")
-        print(e)
-
-    log("INFO: Main Compleated")
-    time.sleep(300)
