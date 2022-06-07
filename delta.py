@@ -81,20 +81,23 @@ def main():
     subreddit = reddit.subreddit("delta")
     # subreddit = reddit.subreddit("test")
 
-    for submission in subreddit.new(limit=1):
+    for submission in subreddit.new(limit=5):
         if not has_posted(submission.comments):
             acronyms = find_acronyms(
                 submission.title + " " + submission.selftext)
             if acronyms != '':
                 submission.reply(body=acronyms)
-                log("INFO: post response posted successfuly")
+                log("INFO: post response posted successfuly. " +
+                    submission.id + " " + submission.title)
 
         for comment in submission.comments:
             if comment.is_submitter:
                 if not has_posted(comment.replies):
                     acronyms = find_acronyms(comment.body)
-                    comment.reply(body=acronyms)
-                    log("INFO: comment response posted successfuly")
+                    if acronyms != '':
+                        comment.reply(body=acronyms)
+                        log("INFO: comment response posted successfuly. " +
+                            comment.id + " " + comment.body)
 
 
 while(True):
