@@ -41,9 +41,13 @@ def find_acronyms(text):
     foundDeltaCodes = set([])
     returnText = ''
 
+    IGNORE_LIST = ['TSA']
+
     # Check for Delta acronyms first, to skip over any airports that match it too.
     for i in splits:
-        if i in DELTA_ACRONYM:
+        if i in IGNORE_LIST:
+            # 
+        elif i in DELTA_ACRONYM:
             acronym = DELTA_ACRONYM.get(i)
             foundDeltaCodes.add(i + ": " + acronym['name'])
         elif i in AIRPORTS:
