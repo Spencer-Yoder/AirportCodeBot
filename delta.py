@@ -104,3 +104,6 @@ def main():
             log("ERROR: in main()")
             print(e)
 
+
+log("LOG: App started")
+main()
