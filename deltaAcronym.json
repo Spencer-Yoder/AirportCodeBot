@@ -23,7 +23,26 @@
     "CS": {
         "name": "Customer Service"
     },
-    "C+": {
-        "name": "Delta Comfort+"
-    }
+    "STE+": {
+        "name": "Sky Team Elite+"
+    },
+    "ST": {
+        "name": "Sky Team"
+    },
+    "E+": {
+        "name": "Sky Team Elite+"
+    },
+    "AF": {
+        "name": "Air France"
+    },
+    "PS": {
+        "name": "Premium Select"
+    },
+    "NRSA": {
+        "name": "Non-revenue Space Available"
+    },
+    "NRSP": {
+        "name": "Non-Revenue Space Positive"
+    },
+    
 }
