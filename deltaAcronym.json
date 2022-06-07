@@ -44,5 +44,10 @@
     "NRSP": {
         "name": "Non-Revenue Space Positive"
     },
-    
+    "DIA": {
+        "name": "DEN - Denver International Airport"
+    },
+    "ABIA": {
+        "name": "AUS - Austin-Bergstrom International Airport"
+    }
 }
