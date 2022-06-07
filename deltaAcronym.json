@@ -1,0 +1,29 @@
+{
+    "PDB": {
+        "name": "Pre Departure Beverage"
+    },
+    "PDBs": {
+        "name": "Pre Departure Beverages"
+    },
+    "SC": {
+        "name": "Sky Club"
+    },
+    "FC": {
+        "name": "First Class"
+    },
+    "D1": {
+        "name": "Delta One"
+    },
+    "RUC": {
+        "name": "Regional Upgrade Certificates"
+    },
+    "GUC": {
+        "name": "Global Upgrade Certificates"
+    },
+    "CS": {
+        "name": "Customer Service"
+    },
+    "C+": {
+        "name": "Delta Comfort+"
+    }
+}
