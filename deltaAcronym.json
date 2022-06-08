@@ -49,5 +49,11 @@
     },
     "ABIA": {
         "name": "AUS - Austin-Bergstrom International Airport"
+    },
+    "IROP": {
+        "name": "Irregular Operations"
+    },
+    "IROPs": {
+        "name": "Irregular Operations"
     }
 }
