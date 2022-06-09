@@ -11,6 +11,12 @@
     "FC": {
         "name": "First Class"
     },
+    "C+": {
+        "name": "Comfort Plus"
+    },
+    "BE": {
+        "name": "Basic Economy"
+    },
     "D1": {
         "name": "Delta One"
     },
