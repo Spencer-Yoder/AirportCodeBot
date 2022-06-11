@@ -63,9 +63,9 @@ def find_acronyms(text):
         returnText = returnText + "**Acronyms:**" + NEW_LINE + \
             NEW_LINE.join(foundDeltaCodes)
 
-    if len(returnText) != 0:
-        returnText = returnText + NEW_LINE + \
-            "^(I am a bot. If you don't like me, feel free to [block me](https://www.reddit.com/settings/privacy).)"
+    # if len(returnText) != 0:
+    #     returnText = returnText + NEW_LINE + \
+    #         "^(I am a bot. If you don't like me, feel free to [block me](https://www.reddit.com/settings/privacy).)"
 
     return returnText
 
