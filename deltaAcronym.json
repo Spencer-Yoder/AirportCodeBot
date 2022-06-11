@@ -61,5 +61,8 @@
     },
     "IROPs": {
         "name": "Irregular Operations"
+    },
+    "TBIT": {
+        "name": "Tom Bradley International Terminal (LAX)"
     }
 }
