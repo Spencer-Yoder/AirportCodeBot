@@ -52,5 +52,8 @@
     },
     "JAL": {
         "name": "Japan Airlines"
+    },
+    "SeaTac": {
+        "name": "Seattle-Tacoma International Airport (SEA)"
     }
 }
