@@ -35,7 +35,9 @@ def find_acronyms(text):
 
     # Skip any words that are under 2 or more then 5 characters
     splits = list(
-        filter(lambda i: (not(len(i) < 2 or len(i) >= 5)), splits))
+        filter(lambda i: (not(len(i) < 2 or len(i) >= 7)), splits))
+
+    print(splits)
 
     foundAirportCodes = set([])
     foundDeltaCodes = set([])
@@ -96,10 +98,11 @@ def main():
 
                 acronyms = find_acronyms(content)
 
-                mention.reply(body=acronyms)
-                unread_messages.append(mention)
+                if acronyms != '':
+                    mention.reply(body=acronyms)
+                    log("INFO: Replied to: " + " " + mention.body)
 
-                log("INFO: Replied to: " + mention.body)
+                unread_messages.append(mention)
 
         except Exception as e:
             log("ERROR: in main()")
