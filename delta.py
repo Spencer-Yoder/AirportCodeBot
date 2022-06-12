@@ -41,7 +41,8 @@ def find_acronyms(text):
     foundDeltaCodes = set([])
     returnText = ''
 
-    IGNORE_LIST = ['TSA', 'MQM', 'MQD', 'MQS', "TIA", "CDC", 'JAL', 'ATL']
+    IGNORE_LIST = ['TSA', 'MQM', 'MQD', 'MQS',
+                   "TIA", "CDC", 'JAL', 'ATL', "AND", 'IMO', 'NOW']
 
     # Check for Delta acronyms first, to skip over any airports that match it too.
     for i in splits:
@@ -63,19 +64,11 @@ def find_acronyms(text):
         returnText = returnText + "**Acronyms:**" + NEW_LINE + \
             NEW_LINE.join(foundDeltaCodes)
 
-    # if len(returnText) != 0:
-    #     returnText = returnText + NEW_LINE + \
-    #         "^(I am a bot. If you don't like me, feel free to [block me](https://www.reddit.com/settings/privacy).)"
+    if len(returnText) != 0:
+        returnText = returnText + NEW_LINE + \
+            "^(I am a bot. If you don't like me, feel free to [block me](https://www.reddit.com/settings/privacy).)"
 
     return returnText
-
-
-def has_posted(comments):
-    for comment in comments:
-        if comment.author == USERNAME:
-            return True
-
-    return False
 
 
 def main():
@@ -87,30 +80,33 @@ def main():
         username=USERNAME,
     )
 
-    subreddit = reddit.subreddit("delta")
-    # subreddit = reddit.subreddit("test")
+    unread_messages = []
 
-    for submission in subreddit.new(limit=5):
+    for mention in reddit.inbox.mentions(limit=10):
         try:
-            if not has_posted(submission.comments):
-                acronyms = find_acronyms(
-                    submission.title + " " + submission.selftext)
-                if acronyms != '':
-                    submission.reply(body=acronyms)
-                    log("INFO: post response posted successfuly. " +
-                        submission.id + " " + submission.title)
+            if mention.new:
+                content = mention.body
 
-            for comment in submission.comments:
-                if comment.is_submitter:
-                    if not has_posted(comment.replies):
-                        acronyms = find_acronyms(comment.body)
-                        if acronyms != '':
-                            comment.reply(body=acronyms)
-                            log("INFO: comment response posted successfuly. " +
-                                comment.id + " " + comment.body)
+                if mention.parent_id.startswith('t1_'):
+                    comment = reddit.comment(mention.parent_id)
+                    content = content + " " + comment.body
+
+                content = content + " " + mention.submission.title + \
+                    " " + mention.submission.selftext
+
+                acronyms = find_acronyms(content)
+
+                mention.reply(body=acronyms)
+                unread_messages.append(mention)
+
+                log("INFO: Replied to: " + mention.body)
+
         except Exception as e:
             log("ERROR: in main()")
             print(e)
+
+    if len(unread_messages):
+        reddit.inbox.mark_read(unread_messages)
 
 
 log("LOG: App started")

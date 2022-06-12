@@ -49,5 +49,8 @@
     },
     "TBIT": {
         "name": "Tom Bradley International Terminal (LAX)"
+    },
+    "JAL": {
+        "name": "Japan Airlines"
     }
 }
