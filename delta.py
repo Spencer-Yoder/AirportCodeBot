@@ -100,7 +100,7 @@ def main():
                 acronyms = find_acronyms(content)
 
                 if acronyms != '':
-                    # mention.reply(body=acronyms)
+                    mention.reply(body=acronyms)
                     log("INFO: Replied to: " + " " + mention.body)
 
                 unread_messages.append(mention)
@@ -109,8 +109,8 @@ def main():
             log("ERROR: in main()")
             print(e)
 
-    # if len(unread_messages):
-        # reddit.inbox.mark_read(unread_messages)
+    if len(unread_messages):
+        reddit.inbox.mark_read(unread_messages)
 
 
 log("LOG: App started")
