@@ -100,8 +100,11 @@ def main():
                 acronyms = find_acronyms(content)
 
                 if acronyms != '':
-                    mention.reply(body=acronyms)
-                    log("INFO: Replied to: " + " " + mention.body)
+                    try:
+                        mention.reply(body=acronyms)
+                        log("INFO: Replied to: " + " " + mention.body)
+                    except praw.exceptions.RedditAPIException:
+                        log("INFO: probility blocked by a user.")
 
                 unread_messages.append(mention)
 
