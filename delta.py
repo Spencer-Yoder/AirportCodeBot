@@ -118,6 +118,6 @@ def main():
 
 log("LOG: App started")
 
-while (True):
-    main()
-    time.sleep(15)
+# while (True):
+main()
+# time.sleep(15)
