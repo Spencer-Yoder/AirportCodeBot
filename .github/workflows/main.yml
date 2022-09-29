@@ -20,8 +20,10 @@ jobs:
 
       - name: Create Bundle
         run: |
-          zip -r code.zip ./package
-          zip -g code.zip delta.py
+          cd package
+          zip -r ../code.zip .
+          cd ..
+          zip -g code.zip delta.py airports.json deltaAcronym.json
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
