@@ -30,5 +30,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: us-east-1
 
-      - name: Upload to AWS Lambda
-        run:  aws lambda update-function-code --function-name Airport-Code-Bot --zip-file fileb://code.zip > /dev/null 
+      - name: Upload Archive
+        uses: actions/upload-artifact@v3
+        with:
+          name: zip
+          path: code.zip
