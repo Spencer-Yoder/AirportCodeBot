@@ -118,6 +118,13 @@ def main():
 
 log("LOG: App started")
 
-# while (True):
-main()
-# time.sleep(15)
+
+def lambda_handler(event, context):
+    return main()
+    # return {
+    #     'statusCode': 200,
+    #     'body': json.dumps('Hello from Lambda!')
+    # }
+
+
+# main()
