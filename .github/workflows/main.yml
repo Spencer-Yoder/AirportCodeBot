@@ -23,7 +23,7 @@ jobs:
           # cd package
           # zip -r ../code.zip .
           # cd ..
-          zip -g code.zip delta.py airports.json deltaAcronym.json
+          zip -g code.zip delta.py #airports.json deltaAcronym.json
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
