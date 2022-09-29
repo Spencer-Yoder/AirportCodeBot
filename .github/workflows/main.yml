@@ -19,7 +19,9 @@ jobs:
         run: pip install -r requirements.txt -t ./package
 
       - name: Create Bundle
-        run: zip -r code.zip .
+        run: |
+          zip -r code.zip ./package
+          zip -g code.zip delta.py
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
